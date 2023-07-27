@@ -53,4 +53,4 @@ When rebalancing the tokens are taken from other users that have to many votes o
 Rebalancing is automatically triggered by functions that change a user's sTRSY balance. These are unstakeGov, withdrawGov, sTRSY.transfer.
 
 
-<img src="{{site.baseurl}}/illustrations/GovernanceRebalancing.svg">
+<img src="{{site.baseurl}}/illustrations/GovRebalancing.png">
