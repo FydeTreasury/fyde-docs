@@ -37,7 +37,7 @@ Since the keeper provides a crucial input for the protocol's operation (protocol
 The protocolAUM value is also monitored by off-chain keepers. If the off-chain value deviates beyond a certain percentage, the keeper is triggered to update the internal value to maintain a consistent on-chain protocolAUM value. However, the keepers' actions are limited, and they can only update the protocolAUM within a coherent range to prevent atomic manipulation and draining the protocol in a single tx. By doing so, even if the gelato network is compromised or the private key of the Fyde keeper is stolen, the protocol is protected from single tx manipulation attacks, giving us time to react and pause the protocol.
 
 
-### Access control and role
+### Access control and roles
 
 Relayer inherit access control logic, with the following roles : 
 - User : If whitelist activated only specific user can interact, if zero address is whitelisted, it removes the whitelist logic.
@@ -46,6 +46,8 @@ Following roles can have multiple addresses assigned :
 - Keeper : Gelato network and Fyde keeper for updatingAUM and processRequest
 - Guard : Can pause/unpause the protocol and add asset to quarantine list
 - IncentiveManager : Can set swap incentiveFactor on Fyde
+  
+  
 
 <img src="{{site.baseurl}}/illustrations/AccessControl.svg">
 
