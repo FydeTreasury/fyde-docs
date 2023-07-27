@@ -20,3 +20,9 @@ layout: post
 ## Swap
 <img src="{{site.baseurl}}/illustrations/Swap.svg">
 
+## Governance Proxy Voting
+<img src="{{site.baseurl}}/illustrations/GovernanceProxyVoting.svg">
+
+## Proxy Rebalancing
+<img src="{{site.baseurl}}/illustrations/ProxyRebalancing.svg">
+
