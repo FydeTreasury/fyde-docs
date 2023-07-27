@@ -2,6 +2,7 @@
 layout: home
 title: Introduction to Fyde protocol
 permalink: /
+cover: /assets/jekyll-gitbook/dinosaur.gif
 ---
 
 ## What is Fyde ? 
