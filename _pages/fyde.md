@@ -37,8 +37,6 @@ For example, depositing an asset that will change the concentration towards over
 
 
 
-TO DO : Add info about the case of governance deposit
-
 
 ## Smart contract overview
 
