@@ -44,7 +44,7 @@ TO DO : Add info about the case of governance deposit
 
 The Fyde contract is primarily responsible for executing the logic related to depositing and withdrawing funds from the index pool and the governance pool. Additionally, the Fyde contract inherits the logic of the following modules:
 
-<img src="{{site.baseurl}}/illustrations/Fyde.png">
+<img src="{{site.baseurl}}/illustrations/fyde.png">
 
 
 - TRSY: an ERC20 used to represent the pool in the form of shares (logic similar to vault ERC-4626)
