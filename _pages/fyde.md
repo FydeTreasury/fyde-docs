@@ -36,8 +36,6 @@ In the event of an action (deposit, withdraw, swap) that unbalances the target c
 For example, depositing an asset that will change the concentration towards overweighting concentration will be taxed, same for withdrawing an asset that is underweight.
 
 
-
-
 ## Smart contract overview
 
 The Fyde contract is primarily responsible for executing the logic related to depositing and withdrawing funds from the index pool and the governance pool. Additionally, the Fyde contract inherits the logic of the following modules:
