@@ -16,13 +16,13 @@ Fyde acts as an index pool that accepts certain assets and with a specific targe
 
 Approved assets can be deposited by users, and upon deposit, TRSY is minted to the user. Minted TRSY represents a share of the pool that is proportional to the deposited amount denominated in USD. 
 
-For example, if a user deposits 100 TokenA representing $100k and the TVL is $1mm with a circulation of 500k TRSY, the user will receive 50k TRSY.
+For example, if a user deposits 100 TokenA representing 100k USD and the TVL is 1mm USD with a circulation of 500k TRSY, the user will receive 50k TRSY.
 
 
 ### Withdraw
 Users can withdraw assets by burning their TRSY, the value of the withdraw is computed using a similar mechanism than depositing. 
 
-For example, if a user has 50k TRSY and the total value locked (TVL) is $1mm, with a total circulation of 500k TRSY, the user withdraw 10% of the index pool and can withdraw the equivalent of $100k.
+For example, if a user has 50k TRSY and the total value locked (TVL) is 1mm USD, with a total circulation of 500k TRSY, the user withdraw 10% of the index pool and can withdraw the equivalent of 100k USD.
 
 
 ### Swap
