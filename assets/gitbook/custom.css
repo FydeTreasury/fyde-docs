@@ -1,11 +1,41 @@
 ---
 ---
 
+@keyframes customBannerColor {
+  0% {
+    background-color: #A866FF;
+  }
+
+  50% {
+    background-color: #008FFF;
+  }
+
+  100% {
+    background-color: #00DEFE;
+  }
+
+}
+
+@keyframes fadeIn {
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+
+
 .book-body {
     overflow-y: scroll;
+    background-image: linear-gradient(90deg, #ffffff 25%, rgba(0, 0, 0, 0) 80%),linear-gradient(15deg, #ffffff 25%, rgba(0, 0, 0, 0) 90%),linear-gradient( rgba(192,192,194, 0.2), rgba(192,192,194, 0.2) ), url("../fyde/BackBannerW.png");
+    background-size: cover;
+    animation: customBannerColor 5s infinite linear alternate;
 }
 
 .book-body .book-header {
+    background-image: url("../fyde/FydeLogo.svg");
+    background-size: cover;
     position: fixed;
     width: 100%;
 }
@@ -17,11 +47,17 @@
     overflow-y: hidden;
 }
 
+
 .book-body .body-inner {
     /* position: absolute; */
     margin-top: 50px;
     min-height: calc(100% - 50px);
 }
+.book-body .body-inner .image {
+    min-height: calc(100% - 46px);
+    background-image: url("../fyde/FydeLogo.svg");
+}
+
 
 @media (max-width: 1240px) {
     .book-body .body-inner {
@@ -47,7 +83,7 @@
 }
 
 .book .book-body .book-header {
-    background: #ffffff;
+    background: #ffffff;    
 }
 
 .book.color-theme-1 .book-body .book-header {

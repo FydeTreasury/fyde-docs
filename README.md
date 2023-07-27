@@ -2,6 +2,7 @@
 layout: home
 title: Introduction to Fyde protocol
 permalink: /
+cover: ./assets/fyde/FydeLogo.svg
 ---
 
 ## What is Fyde ? 
