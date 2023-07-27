@@ -31,7 +31,6 @@
     background-image: linear-gradient(90deg, #ffffff 25%, rgba(0, 0, 0, 0) 80%),linear-gradient(15deg, #ffffff 25%, rgba(0, 0, 0, 0) 90%),linear-gradient( rgba(192,192,194, 0.2), rgba(192,192,194, 0.2) ), url("../fyde/BackBannerW.png");
     background-size: cover;
     animation: customBannerColor 5s infinite linear alternate;
-    //animation: fadeIn ease 5s;
 }
 
 .book-body .book-header {
@@ -70,7 +69,6 @@
 
 .book-body .body-inner .page-wrapper {
     min-height: calc(100% - 46px);
-    //background-image: url("../fyde/FydeLogo.svg");
 }
 
 .book-body .body-inner .page-wrapper .page-inner {
@@ -85,11 +83,7 @@
 }
 
 .book .book-body .book-header {
-    background: #ffffff;
-    //padding-left: 100px;
-    //min-height: 100px;
-    //background-image: url("../fyde/FydeLogo.svg");
-    
+    background: #ffffff;    
 }
 
 .book.color-theme-1 .book-body .book-header {
