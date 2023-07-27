@@ -46,9 +46,9 @@ The governance related functions delegateVotingRights, setDelegate/clearDelegate
 
 Holders of sTRSY-govToken can use voting rights of the underlying govToken, equivalent to the USD value of the sTRSY. Since the price of TRSY and a specific governance token fluctuate, the amount of tokens/votes a user is entitled to changes over time. This means tokens need to be redistributed between proxies and the standard pool. It is the responsibility of the user to trigger the rebalancing of their proxy if they don't have their full voting rights assigned.
 
-Example: User deposits 100 tokenA at a price of 1\$ into Fyde and wants to keep governance rights. At the time of deposit the price of TRSY is 1\$, so they receive 100 sTRSY-tokenA. At this time they can use 100 votes for tokenA governance.
-Over time the prices of tokenA stays constant while TRSY increases to 1.20\$. Since the \$ equivalent of 100 sTRSY-tokenA is now 120 tokenA, user should call rebalanceProxy in order to get 120 tokenA assigned. 
-If TRSY then drops to 0.5\$ user would be entitled to 50 tokenA votes, but has 120 assigned. As long as no one else is claiming these tokens, user may keep additional voting rights. If another is underweight and calls rebalanceProxy, tokens will be transferred to them.
+Example: User deposits 100 tokenA at a price of 1USD into Fyde and wants to keep governance rights. At the time of deposit the price of TRSY is 1USD, so they receive 100 sTRSY-tokenA. At this time they can use 100 votes for tokenA governance.
+Over time the prices of tokenA stays constant while TRSY increases to 1.20USD. Since the USD equivalent of 100 sTRSY-tokenA is now 120 tokenA, user should call rebalanceProxy in order to get 120 tokenA assigned. 
+If TRSY then drops to 0.5USD user would be entitled to 50 tokenA votes, but has 120 assigned. As long as no one else is claiming these tokens, user may keep additional voting rights. If another is underweight and calls rebalanceProxy, tokens will be transferred to them.
 When rebalancing the tokens are taken from other users that have to many votes or from Fyde's non-governance pool. If due to strong price fluctuations there are temporarily not enough token in the protocol, the amount of token will be distributed to sTRSY-tokenA holders according to their fair share.
 Rebalancing is automatically triggered by functions that change a user's sTRSY balance. These are unstakeGov, withdrawGov, sTRSY.transfer.
 
