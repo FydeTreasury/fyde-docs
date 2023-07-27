@@ -1,0 +1,21 @@
+
+sequenceDiagram
+    actor User
+    participant Fyde
+    participant GovernanceModule
+    participant User's Proxy
+    participant Underweight Proxy
+    participant Overweight Proxy
+
+    User ->> GovernanceModule: calls rebalanceProxy()
+    Note over GovernanceModule: If User's Proxy <br/> overweight 
+    GovernanceModule ->> User's Proxy: sendAssetToFyde()
+    User's Proxy ->> Fyde: ERC20 transfer of overweight assets
+    Note over GovernanceModule: If User's Proxy underweight <br/> and enough in standard Pool
+    GovernanceModule ->> Fyde: sendAssetToProxy()
+    Fyde ->> User's Proxy: ERC20 transfer of underweight assets
+    Note over GovernanceModule: If User's Proxy underweight <br/> and not enough in standard Pool
+    GovernanceModule ->> Overweight Proxy: sendAssetToFyde()
+    Overweight Proxy ->> Fyde: ERC20 transfer of overweight assets
+        GovernanceModule ->> Fyde: sendAssetToProxy()
+    Fyde ->> User's Proxy: ERC20 transfer of underweight assets

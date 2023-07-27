@@ -50,7 +50,7 @@ The Fyde contract is primarily responsible for executing the logic related to de
 - TRSY: an ERC20 used to represent the pool in the form of shares (logic similar to vault ERC-4626)
 - AddressRegistry: contains the addresses of contracts that interact with the protocol
 - ProtocolState: contains the accounting logic of the protocol, as well as various parameters for the protocol
-- GovernanceAccess: TO DO
+- GovernanceAccess: functions to connect Fyde with the governanceModule contract
 - AssetRegistry: contains the logic for adding assets to the protocol
 - Tax: calculates potential taxes on deposits, withdrawals, and swaps.
 

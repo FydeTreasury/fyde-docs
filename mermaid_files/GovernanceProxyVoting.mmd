@@ -1,0 +1,15 @@
+
+sequenceDiagram
+    actor User
+    participant GovernanceModule
+    participant MinimalProxy
+    participant UserProxy
+
+    User ->> GovernanceModule: Calls governance <br> function <br> (e.g. degelate())
+    GovernanceModule ->> MinimalProxy: forwards via call to user specific proxy <br/> (MinimalProxy.delegate())
+    MinimalProxy ->> GovernanceModule: forwards via delegateCall <br/> (GovernanceModule.delegateCall("delegate()"))
+    Note over GovernanceModule: Access authorization and call <br/> for implementation address logic
+    MinimalProxy ->> GovernanceModule: calls to get implementation address <br/> (GovernanceModule.proxyImplementation())
+    MinimalProxy ->> UserProxy: forwards via delegateCall <br/> (UserProxy.delegateCall("delegate()"))
+    Note over UserProxy: Contains logic for governance functions <br/>
+    
