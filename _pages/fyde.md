@@ -10,13 +10,31 @@ layout: post
 
 The Fyde contract serves as the core contract of the Fyde protocol. It handles the logic for depositing, withdrawing, and swapping assets within the protocol.
 
-Fyde acts as an index pool that accepts certain assets and sets a target concentration, which represents the desired weight of the asset in the protocol relative to the TVL in USD. Target concentrations represent the ideal weight of a given asset in the protocol as part of our portfolio management strategy. In the event of an action (deposit, withdraw, swap) that unbalances the target concentration, a tax is applied to penalize these actions in order to maintain the current concentrations close to the portfolio management strategy. For example, depositing an asset that will change the concentration towards overweighing concentration will be taxed, same for withdrawing an asset that is underweight.
+Fyde acts as an index pool that accepts certain assets and with a specific target concentration for each asset,that represents the desired weight of the asset in the protocol relative to the TVL in USD. Target concentrations represent the ideal weight of a given asset in the protocol as part of our portfolio management strategy. Users can deposit, withdraw, and swaps these assets in the Fyde protocol.
 
-Approved assets can be deposited by users, and upon deposit, TRSY is minted to the user. This represents a share of the pool that is proportional to the deposited amount denominated in USD. For example, if a user deposits 100 TokenA representing 100k and the TVL is 1M USD with a circulation of 500k TRSY, the user will receive 50k TRSY.
+### Deposit
 
-Users can withdraw assets by burning their TRSY, using a mechanism similar to depositing. For example, if a user has 50,000 TRSY and the total value locked (TVL) is 1 million USD, with a total circulation of 500,000 TRSY, the user owns 10% of the index pool and can withdraw the equivalent of 100,000 USD.
+Approved assets can be deposited by users, and upon deposit, TRSY is minted to the user. Minted TRSY represents a share of the pool that is proportional to the deposited amount denominated in USD. 
 
-Users can swap assetIn for assetOut. During the swap, we exchange the USD value of assetIn for an amount of assetOut with the same USD value.
+For example, if a user deposits 100 TokenA representing $100k and the TVL is $1mm with a circulation of 500k TRSY, the user will receive 50k TRSY.
+
+
+### Withdraw
+Users can withdraw assets by burning their TRSY, the value of the withdraw is computed using a similar mechanism than depositing. 
+
+For example, if a user has 50k TRSY and the total value locked (TVL) is $1mm, with a total circulation of 500k TRSY, the user withdraw 10% of the index pool and can withdraw the equivalent of $100k.
+
+
+### Swap
+Users can swap assetIn for assetOut. During the swap, we exchange the USD value of assetIn for an amount of assetOut with the same USD value. (Note that for swap an incentive factor can be applied as an incentive for swapping given assets).
+
+
+### Tax 
+
+In the event of an action (deposit, withdraw, swap) that unbalances the target concentration, a tax is applied to penalize these actions in order to maintain the current concentrations close to the portfolio management strategy. 
+
+For example, depositing an asset that will change the concentration towards overweighting concentration will be taxed, same for withdrawing an asset that is underweight.
+
 
 
 TO DO : Add info about the case of governance deposit
@@ -26,17 +44,15 @@ TO DO : Add info about the case of governance deposit
 
 The Fyde contract is primarily responsible for executing the logic related to depositing and withdrawing funds from the index pool and the governance pool. Additionally, the Fyde contract inherits the logic of the following modules:
 
-<img src="{{site.baseurl}}/illustrations/fyde.png">
+<img src="{{site.baseurl}}/illustrations/Fyde.png">
 
 
-- TRSY: an ERC20 used to represent the pool in the form of shares (similar to the logic of vault 4626)
+- TRSY: an ERC20 used to represent the pool in the form of shares (logic similar to vault ERC-4626)
 - AddressRegistry: contains the addresses of contracts that interact with the protocol
 - ProtocolState: contains the accounting logic of the protocol, as well as various parameters for the protocol
 - GovernanceAccess: TO DO
 - AssetRegistry: contains the logic for adding assets to the protocol
-- Quarantine List: TO DO
 - Tax: calculates potential taxes on deposits, withdrawals, and swaps.
-
 
 
 
@@ -75,4 +91,9 @@ With the total value of TRSY tokens transferred to the tax contract being:
 \begin{equation}
   T_{tax} = \sum_{i=1}^N T^{tax}_i\ .
 \end{equation}
+
+
+### Swap tax
+
+Swap can be seen as a deposit and withdraw in the same transaction, so the tax logic is similar. Deposit tax is applied on the assetIn and withdraw tax is applied on the assetOut.
 
