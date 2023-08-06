@@ -1,0 +1,22 @@
+
+sequenceDiagram
+    actor Owner
+    actor User
+    participant Escrow
+    participant Relayer
+
+    Owner ->> Escrow: Deploys escrow and whitelists assets
+    Note over Escrow: Escrow period starts
+    User ->> Escrow: call deposit(std/gov)
+    Note over Escrow: Freeze period starts
+    Owner -->> Escrow: (revoke() in case of error)
+    User -->> Escrow: refund() if revoked
+    Owner ->> Escrow: call setConcentrationAmounts() <br/> (how much to accept from each asset)
+    Owner ->> Escrow: depositToFyde() <br/> (called multiple depending on number of assets)
+    Escrow ->> Relayer: call requestDeposit()
+    Relayer ->> Escrow: mint TRSY/sTRSY 
+    Owner ->> Escrow: updateInternalAccounting()
+    Note over Escrow: Freeze period ends / <br/> Claim period starts
+    User -->> Escrow: claimAndRefund()
+    Escrow -->> User: transfer TRSY/sTRSY <br/> refund of unused deposits
+
