@@ -1,7 +1,7 @@
 ---
-title: Governance module
+title: Escrow state
 author: Fyde  
-date: 2022-02-07
+date: 2022-02-08
 category: Jekyll
 layout: post
 ---
