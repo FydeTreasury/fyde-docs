@@ -55,4 +55,4 @@ Following roles can have multiple addresses assigned :
 
 ## Quarantine list
 
-In the context of our portfolio management strategy, we may have to quarantine assets based on our risk management strategy. When an asset is quarantined, action for this given asset (deposit, withdraw and swap) are disabled. The quarantine list is managed by the guard role. 
+To safeguard against potential damages to the pool from tokens that might be subjected to drastic declines in value—often referred to as "falling knife" scenarios (e.g., Terra Luna)—Fyde possesses the capability to quarantine assets, guided by a strategic risk management overlay. When an asset is placed under quarantine, all activities associated with this specific asset, such as deposits, withdrawals, and swaps, are disabled. The management of the quarantine list is managed by the guard role.
