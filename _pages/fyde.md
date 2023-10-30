@@ -90,5 +90,5 @@ With the total value of TRSY tokens transferred to the tax contract being:
 
 ### Swap tax
 
-A swap is treated as a deposit and withdrawal within the same transaction, hence the tax logic is identical.  Deposit tax is applied on the assetIn and withdraw tax is applied on the assetOut.
+A swap is treated as a deposit and withdrawal within the same transaction, hence the tax logic is very similar.  Deposit tax is applied on the assetIn and withdraw tax is applied on the assetOut.
 
