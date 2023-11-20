@@ -79,7 +79,7 @@ W^b_i = \min\left(\max\left(W_i -  T_{VL}(C_i - C^0_i) - T_WC^0_i,0\right),W_i\r
 The USD value that should be subtracted from each individual token withdrawal can be written as:
 
 \begin{equation}
-  T^{tax}_i = W^b_i \min\left(1-\dfrac{T_{VL}C_i-W_i}{T_{VL}C^0_i - T_WC^0_i},1\right)\ .
+T^{tax}_i = W^b_i \min\left(1-\dfrac{T_{VL}C_i-W_i}{T_{VL}C^0_i - T_WC^0_i},1\right)\ .
 \end{equation}
 
 With the total value of TRSY tokens transferred to the tax contract being:
