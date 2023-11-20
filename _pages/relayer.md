@@ -9,32 +9,32 @@ layout: post
 ## Main overview
 
 The role of the relayer is twofold : 
-- First, it serves as the entry point for external users to interact with the protocol through request functions (requestDeposit, requestWithdraw, requestSwap).
-- Second, it is used for settlement automation in Fyde through monitoring and updating the protocol AUM, and it manages the process request. Automation is monitored by external keepers, such as Gelato Network and our Fyde Keeper bot.
+- Firstly, it acts as the entry point for external users to interact with the protocol through request functions such as requestDeposit, requestWithdraw, and requestSwap.
+- Secondly, it is utilized for settlement automation in Fyde by monitoring and updating the protocol AUM (Assets Under Management), and managing the process request. Automation is overseen by external keepers like the Gelato Network and our Fyde Keeper bot.
 
 
 ## Why is a relayer necessary? 
 
-In designing our protocol, we chose to denominate assets and TVL in USD, with on-chain pricing. However, TVL calculation requires iterating through n assets, making on-chain pricing too expensive and not scalable. The keeper's goal is to calculate protocolAUM's value via on-chain functions, but since the computation is off-chain, this process is inexpensive.
+In designing our protocol, we opted to denominate assets and TVL (Total Value Locked) in USD, with on-chain pricing. However, calculating TVL requires iterating through n assets, rendering on-chain pricing excessively expensive and unscalable. The keeper's objective is to ascertain the value of protocolAUM through on-chain functions, but as this computation occurs off-chain, the process remains cost-effective.
 
 
 ## Relayer functionalities
 
 ### Requesting
 
-Users are calling the requests function to express their action's intent with somes parameters such as : assets, amounts, keep the governance rights, slippage parameters. Then the request is push into the relayer queue and wait to be processed by a keeper. When user are making a request they will also forward some eth in order to pay the gas fees of the keeper. (See User flow section)
+Users call the request functions to convey their intended actions, including parameters such as assets, amounts, governance rights retention, and slippage parameters. Subsequently, the request is added to the relayer queue, awaiting processing by a keeper. Users making a request will also transfer some ETH to cover the keeper’s gas fees (refer to the User Flow section for more details).
 
 ### Processing
 
-The keepers (currently Gelato Bot and a own made keeper) monitor the relayer queue. When the queue fills up, the keeper is triggered and processes the pending requests. The functions's input of the process functions is the protocolAUM, which is calculated off-chain.
+Keepers, currently consisting of the Gelato Bot and a self-created keeper, supervise the relayer queue. When the queue becomes populated, a keeper is activated to process the pending requests. The input of the processing functions is protocolAUM, calculated off-chain.
 
 
 ### AUM monitoring and protection from keeper manipulation
 
 
-Since the keeper provides a crucial input for the protocol's operation (protocolAUM), it opens up an important attack vector. For this reason, we store the protocolAUM value inside the fyde contract as well. When the keeper calls the processRequest function, we ensure that the input value falls within a reasonable range to prevent manipulation attacks.
+Since the keeper plays a pivotal role by providing essential input for the protocol's operation (protocolAUM), it creates an attack vector. For this reason, we also secure the protocolAUM value within the Fyde contract. When the keeper calls the processRequest function, we ensure the input value aligns within a reasonable threshold to thwart manipulation attacks.
 
-The protocolAUM value is also monitored by off-chain keepers. If the off-chain value deviates beyond a certain percentage, the keeper is triggered to update the internal value to maintain a consistent on-chain protocolAUM value. However, the keepers' actions are limited, and they can only update the protocolAUM within a coherent range to prevent atomic manipulation and draining the protocol in a single tx. By doing so, even if the gelato network is compromised or the private key of the Fyde keeper is stolen, the protocol is protected from single tx manipulation attacks, giving us time to react and pause the protocol.
+The protocolAUM value is also monitored by off-chain keepers. Should the off-chain value diverge beyond a specific percentage, the keeper is prompted to update the internal value, ensuring a consistent on-chain protocolAUM. However, the keepers' actions are limited, and they can only update the protocolAUM within a coherent range to prevent atomic manipulation and draining of the protocol in a single tx. Consequently, even in scenarios where the Gelato Network is compromised or the Fyde keeper’s private key is stolen, the protocol remains safeguarded against immediate, single-transaction manipulation attacks, giving us a window to respond and suspend the protocol.
 
 
 ### Access control and roles
@@ -55,4 +55,4 @@ Following roles can have multiple addresses assigned :
 
 ## Quarantine list
 
-In the context of our portfolio management strategy, we may have to quarantine assets based on our risk management strategy. When an asset is quarantined, action for this given asset (deposit, withdraw and swap) are disabled. The quarantine list is managed by the guard role. 
+To safeguard against potential damages to the pool from tokens that might be subjected to drastic declines in value—often referred to as "falling knife" scenarios (e.g., Terra Luna)—Fyde possesses the capability to quarantine assets, guided by a strategic risk management overlay. When an asset is placed under quarantine, all activities associated with this specific asset, such as deposits, withdrawals, and swaps, are disabled. The management of the quarantine list is managed by the guard role.
