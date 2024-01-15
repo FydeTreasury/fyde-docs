@@ -64,7 +64,7 @@ D^a_i = \min\left(\max\left(D_i + T_{VL}(C_i - C^0_i) - T_DC^0_i,0\right),D_i\ri
 The total tax value, subtracted from the minted TRSY tokens and denominated in USD, is calculated as:
 
 \begin{equation}
-  T_{tax} = \sum_{i=1}^N D^a_i \min\left(\dfrac{T_{VL}C_i+D_i}{T_{VL}C^0_i + T_DC^0_i} - 1,1\right)\ .
+  T_{penalty} = \sum_{i=1}^N D^a_i \min\left(\dfrac{T_{VL}C_i+D_i}{T_{VL}C^0_i + T_DC^0_i} - 1,1\right)\ .
 \end{equation}
 
 ### Withdrawal tax
@@ -78,13 +78,13 @@ W^b_i = \min\left(\max\left(W_i -  T_{VL}(C_i - C^0_i) - T_WC^0_i,0\right),W_i\r
 The USD value that should be subtracted from each individual token withdrawal can be written as:
 
 \begin{equation}
-  T^{tax}_i = W^b_i \min\left(1-\dfrac{T_{VL}C_i-W_i}{T_{VL}C^0_i - T_WC^0_i},1\right)\ .
+  T^{penalty}_i = W^b_i \min\left(1-\dfrac{T_{VL}C_i-W_i}{T_{VL}C^0_i - T_WC^0_i},1\right)\ .
 \end{equation}
 
 With the total value of TRSY tokens transferred to the tax contract being:
 
 \begin{equation}
-  T_{tax} = \sum_{i=1}^N T^{tax}_i\ .
+  T_{penalty} = \sum_{i=1}^N T^{tax}_i\ .
 \end{equation}
 
 
